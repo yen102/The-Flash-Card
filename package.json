@@ -1,0 +1,27 @@
+{
+    "name": "the-flash-card",
+    "version": "1.0.0",
+    "description": "Anki-like Flash card web app",
+    "main": "app.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "node -r esm app.js",
+        "dev": ".\\node_modules\\.bin\\nodemon -r esm app.js"
+    },
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "babel-core": "^6.26.3",
+        "babel-loader": "^8.2.3",
+        "babel-preset-env": "^1.7.0",
+        "bcryptjs": "^2.4.3",
+        "body-parser": "^1.19.1",
+        "cors": "^2.8.5",
+        "dotenv": "^11.0.0",
+        "esm": "^3.2.25",
+        "express": "^4.17.2",
+        "jsonwebtoken": "^8.5.1",
+        "nodemon": "^2.0.15",
+        "sequelize": "^6.13.0"
+    }
+}
