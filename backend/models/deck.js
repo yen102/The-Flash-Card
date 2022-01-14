@@ -5,11 +5,19 @@ const Deck = (sequelize, Sequelize) => {
             primaryKey: true,
             autoIncrement: true,
         },
+        categoryID: {
+            type: Sequelize.INTEGER,
+            references: {
+                model: 'category',
+                key: 'categoryID'
+            }
+        },
         name: {
             type: Sequelize.STRING
         },
         words: {
-            type: Sequelize.INTEGER
+            type: Sequelize.INTEGER,
+            defaultValue: 0
         }
     }, {
         freezeTableName: true,

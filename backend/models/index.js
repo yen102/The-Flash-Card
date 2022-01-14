@@ -25,10 +25,10 @@ db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
 db.users = User(sequelize, Sequelize);
-db.files = File(sequelize, Sequelize);
+// db.files = File(sequelize, Sequelize);
 db.decks = Deck(sequelize, Sequelize);
-db.categorys = Category(sequelize, Sequelize);
-db.card = Card(sequelize, Sequelize);
+db.categories = Category(sequelize, Sequelize);
+db.cards = Card(sequelize, Sequelize);
 
 export const init = async() => {
     const check = await db.users.findOne({
