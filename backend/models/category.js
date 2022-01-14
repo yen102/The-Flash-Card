@@ -1,5 +1,5 @@
 const Category = (sequelize, Sequelize) => {
-    const Category = sequelize.define('category', {
+    const Category = sequelize.define('Category', {
         categoryID: {
             type: Sequelize.INTEGER,
             primaryKey: true,
@@ -11,7 +11,7 @@ const Category = (sequelize, Sequelize) => {
         userID: {
             type: Sequelize.INTEGER,
             references: {
-                model: 'user',
+                model: 'User',
                 key: 'userID'
             }
         }
@@ -25,6 +25,14 @@ const Category = (sequelize, Sequelize) => {
             fields: ['categoryID']
         }]
     });
+
+    // Category.associate = models => {
+    //     Category.belongsTo(models.User, {
+    //         foreignKey: {
+    //             allowNull: false
+    //         }
+    //     });
+    // };
     return Category;
 }
 

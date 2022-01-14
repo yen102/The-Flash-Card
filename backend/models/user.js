@@ -1,5 +1,5 @@
 const User = (sequelize, Sequelize) => {
-    const User = sequelize.define('user', {
+    const User = sequelize.define('User', {
         userID: {
             type: Sequelize.INTEGER,
             primaryKey: true,
@@ -31,6 +31,12 @@ const User = (sequelize, Sequelize) => {
             fields: ['userID']
         }]
     });
+
+    // User.associate = models => {
+    //     User.hasMany(models.Category, {
+    //         onDelete: "cascade"
+    //     })
+    // }
     return User;
 }
 

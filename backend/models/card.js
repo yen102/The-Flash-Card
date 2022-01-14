@@ -1,5 +1,5 @@
 const Card = (sequelize, Sequelize) => {
-    const Card = sequelize.define('card', {
+    const Card = sequelize.define('Card', {
         cardID: {
             type: Sequelize.INTEGER,
             primaryKey: true,
@@ -20,7 +20,7 @@ const Card = (sequelize, Sequelize) => {
         deckID: {
             type: Sequelize.INTEGER,
             references: {
-                model: 'deck',
+                model: 'Deck',
                 key: 'deckID'
             }
         }
@@ -35,6 +35,6 @@ const Card = (sequelize, Sequelize) => {
         }]
     });
     return Card;
-}
+};
 
 export default Card;

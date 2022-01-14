@@ -1,5 +1,5 @@
 const Deck = (sequelize, Sequelize) => {
-    const Deck = sequelize.define('deck', {
+    const Deck = sequelize.define('Deck', {
         deckID: {
             type: Sequelize.INTEGER,
             primaryKey: true,
@@ -8,7 +8,7 @@ const Deck = (sequelize, Sequelize) => {
         categoryID: {
             type: Sequelize.INTEGER,
             references: {
-                model: 'category',
+                model: 'Category',
                 key: 'categoryID'
             }
         },
