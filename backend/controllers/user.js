@@ -34,6 +34,7 @@ export const signup = async(req, res) => {
 
 export const login = async(req, res) => {
     try {
+        console.log(req.body)
         const { username, password } = req.body;
         const user = await User.findOne({ where: { username: username } });
         if (!user) {
@@ -49,7 +50,7 @@ export const login = async(req, res) => {
             userID: user.dataValues.userID,
             created: new Date(),
         };
-        const token = await jwt.sign(payload, 'secret', { expiresIn: '24h' });
+        const token = jwt.sign(payload, 'secret', { expiresIn: '24h' });
         return res.json({ token, userID: payload.userID, role: user.dataValues.role });
     } catch (err) {
         return res.status(400).json({ message: err + ' ' });

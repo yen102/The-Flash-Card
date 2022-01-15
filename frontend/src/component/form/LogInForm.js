@@ -24,15 +24,15 @@ const LogInForm = () => {
     }
     setNoti('');
     try {
-      const checkLogin = await axios.get(API_URL + '/user/login', {
-        params: {
-          username,
-          password,
-        }
+      const checkLogin = await axios.post(API_URL + '/user/login', {
+        username,
+        password,
       });
       if(checkLogin.data) {
-        localStorage.setItem('userId', checkLogin.data.userId);
-        localStorage.setItem('name', checkLogin.data.name);
+        const { userID, role, token } = checkLogin.data;
+        localStorage.setItem('userID', userID);
+        localStorage.setItem('token', token);
+        localStorage.setItem('role', role);
         navigate('/', { replace: true });
       }
     } catch (err) {

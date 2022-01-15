@@ -9,17 +9,20 @@ const loading = (
 );
 
 // Pages
-const Register = React.lazy(() => import('./pages/Register'));
+const SignUp = React.lazy(() => import('./pages/SignUp'));
 const Login = React.lazy(() => import('./pages/Login'));
 const Homepage = React.lazy(() => import('./pages/Homepage'));
+const Card = React.lazy(() => import('./pages/Card'));
+
 function App() {
   return (
     <BrowserRouter>
       <React.Suspense fallback={loading}>
         <Routes>
-          <Route exact path='/register' name='Register Page' element={<Register />} />
+          <Route exact path='/signUp' name='Sign Up Page' element={<SignUp />} />
           <Route exact path='/login' name='Login Page' element={<Login />} />
           <Route exact path='/' name='Home Page' element={<Homepage />} />
+          <Route exact path='/card/:id' name='Card' element={<Card />} />
         </Routes>
       </React.Suspense>
     </BrowserRouter>

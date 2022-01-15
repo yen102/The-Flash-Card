@@ -31,7 +31,7 @@ const SignUpForm = (props) => {
     }
     setNoti('');
     try {
-      const newUser = await axios.post(API_URL + '/user/register', {
+      const newUser = await axios.post(API_URL + '/user/signup', {
         name: `${firstname} ${lastname}`,
         username,
         password,

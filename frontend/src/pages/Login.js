@@ -15,16 +15,10 @@ const Login = () => {
     }
   });
 
-  const renderForm = () => {
-    return (
-      <LogInForm />
-    );
-  }
-
   return (
     <>
       <Header selectedForm='logIn' />
-      {renderForm()}
+      <LogInForm />
     </>
   );
 }

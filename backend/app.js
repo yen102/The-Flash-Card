@@ -32,10 +32,10 @@ app.use((req, res, next) => {
 
 // Import Routes
 import userRoute from './routes/user';
-import dateRoute from './routes/data';
+import dataRoute from './routes/data';
 
 app.use('/user', userRoute);
-app.use('/data', dateRoute);
+app.use('/data', dataRoute);
 // app.use('/file', fileRoute);
 // app.use('/admin', adminRoute);
 

@@ -30,7 +30,7 @@
   border: 1px solid rgb(216, 216, 216);
   margin: 5px 0;
   display: grid;
-  grid-template-columns: 85px auto;
+  grid-template-columns: 90px auto;
 }
 
 .forgot-password {
@@ -83,4 +83,5 @@
 
 .name-input {
   font-size: 18px;
+  cursor: default;
 }

@@ -1,11 +1,11 @@
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import Header from "../component/header";
 import HomepageComponent from '../component/homepage';
 
 const Homepage = () => {
 
   // const isLogin = localStorage.getItem('userId') && localStorage.getItem('name');
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   // useEffect(() => {
   //   if(!isLogin) {
