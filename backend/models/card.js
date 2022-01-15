@@ -19,15 +19,11 @@ const Card = (sequelize, Sequelize) => {
         },
         deckID: {
             type: Sequelize.INTEGER,
-            references: {
-                model: 'Deck',
-                key: 'deckID'
-            }
         }
     }, {
         freezeTableName: true,
         timestamps: false,
-        tableName: 'card',
+        tableName: 'Card',
         indexes: [{
             name: 'card_index',
             using: 'BTREE',

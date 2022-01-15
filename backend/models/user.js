@@ -24,19 +24,13 @@ const User = (sequelize, Sequelize) => {
     }, {
         freezeTableName: true,
         timestamps: false,
-        tableName: 'user',
+        tableName: 'User',
         indexes: [{
             name: 'user_index',
             using: 'BTREE',
             fields: ['userID']
         }]
     });
-
-    // User.associate = models => {
-    //     User.hasMany(models.Category, {
-    //         onDelete: "cascade"
-    //     })
-    // }
     return User;
 }
 
