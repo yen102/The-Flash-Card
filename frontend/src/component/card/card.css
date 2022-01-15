@@ -1,0 +1,28 @@
+.card-button {
+  height: 20px;
+  width: 100px;
+  background-color: aqua;
+  text-align: center;
+  padding: 20px;
+  border: 1px solid black;
+  border-radius: 8px;
+  cursor: pointer;
+  margin: 50px auto 50px auto;
+}
+
+.card-button:hover {
+  background-color: antiquewhite;
+}
+
+.card-content {
+  display: grid;
+  grid-template-columns: 30vw 70vw;
+  height: calc(100vh - 90px);
+  position: fixed;
+  left: 0;
+}
+
+.card-buttons {
+  margin-top: auto;
+  margin-bottom: auto;
+}

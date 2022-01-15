@@ -7,10 +7,6 @@ const Deck = (sequelize, Sequelize) => {
         },
         categoryID: {
             type: Sequelize.INTEGER,
-            references: {
-                model: 'Category',
-                key: 'categoryID'
-            }
         },
         name: {
             type: Sequelize.STRING
@@ -22,7 +18,7 @@ const Deck = (sequelize, Sequelize) => {
     }, {
         freezeTableName: true,
         timestamps: false,
-        tableName: 'deck',
+        tableName: 'Deck',
         indexes: [{
             name: 'deck_index',
             using: 'BTREE',

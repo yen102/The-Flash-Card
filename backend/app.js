@@ -1,23 +1,21 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
-import db, { init } from './backend/models';
+import { init } from './models';
 import jwt from 'jsonwebtoken';
 
 const app = express();
-
-db.sequelize.sync();
 
 init();
 
 app.use(bodyParser.json());
 app.use(cors());
 
-app.use(async(req, res, next) => {
+app.use((req, res, next) => {
     try {
         if (req.headers['x-access-token']) {
             const accessToken = req.headers['x-access-token'];
-            const { user, exp } = await jwt.verify(accessToken, 'secret');
+            const { user, exp } = jwt.verify(accessToken, 'secret');
             //Check if token has expired
             if (exp < Date.now().valueOf() / 1000) {
                 return res.status(401).json({ message: "JWT token has expired, please login to obtain a new one" });
@@ -33,13 +31,13 @@ app.use(async(req, res, next) => {
 });
 
 // Import Routes
-import userRoute from './backend/routes/user';
-import dateRoute from './backend/routes/data';
+import userRoute from './routes/user';
+import dataRoute from './routes/data';
 
 app.use('/user', userRoute);
-app.use('/data', dateRoute);
+app.use('/data', dataRoute);
 // app.use('/file', fileRoute);
 // app.use('/admin', adminRoute);
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8000;
 app.listen(PORT, console.log(`Server started on ${PORT}`));
