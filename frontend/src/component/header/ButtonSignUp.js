@@ -6,7 +6,7 @@ const ButtonSignUp = (props) => {
   const navigate = useNavigate();
 
   const redirectToRegister = () => {
-    navigate('/register', { replace: true });  
+    navigate('/signUp', { replace: true });  
   }
 
   return (

@@ -1,7 +1,6 @@
 import Deck from "./Deck";
 
 const Category = (props) => {
-  console.log(props)
   return (
     <div className='category' ref={props.innerRef}>
       <div className='name-category'>

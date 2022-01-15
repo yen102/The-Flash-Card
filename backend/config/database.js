@@ -1,7 +1,7 @@
 const dbConfig = {
     HOST: 'localhost',
-    USER: 'root',
-    PASSWORD: '',
+    USER: 'hoang',
+    PASSWORD: 'hoang3105',
     DB: 'the_flash',
     dialect: 'mysql',
     pool: {
