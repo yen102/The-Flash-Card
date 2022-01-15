@@ -1,7 +1,7 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
-import { init } from './backend/models';
+import { init } from './models';
 import jwt from 'jsonwebtoken';
 
 const app = express();
@@ -31,13 +31,13 @@ app.use((req, res, next) => {
 });
 
 // Import Routes
-import userRoute from './backend/routes/user';
-import dateRoute from './backend/routes/data';
+import userRoute from './routes/user';
+import dateRoute from './routes/data';
 
 app.use('/user', userRoute);
 app.use('/data', dateRoute);
 // app.use('/file', fileRoute);
 // app.use('/admin', adminRoute);
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8000;
 app.listen(PORT, console.log(`Server started on ${PORT}`));
