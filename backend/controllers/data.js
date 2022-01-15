@@ -59,7 +59,7 @@ export const createCard = async(req, res) => {
 export const getCategories = async(req, res) => {
     try {
         // const data = await Category.findAll({ where: { userID: req.body.userID } });
-        const data = await Category.findAll({ include: { model: User } });
+        const data = await Category.findAll({ include: [{ model: User, as: 'User' }] });
         res.status(201).json({ success: true, listCategories: data })
         console.log(data);
     } catch (err) {

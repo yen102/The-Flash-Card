@@ -25,8 +25,8 @@ db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
 db.users = User(sequelize, Sequelize);
-db.decks = Deck(sequelize, Sequelize);
 db.categories = Category(sequelize, Sequelize);
+db.decks = Deck(sequelize, Sequelize);
 db.cards = Card(sequelize, Sequelize);
 
 export const init = async() => {
