@@ -203,7 +203,12 @@ export const getDecks = async(req, res) => {
     try {
         // const data = await Category.findAll({ where: { userID: req.body.userID } });
         const data = await Category.findAll({
-            where: { userID: res.locals.loggedInUser.userID },
+            where: {
+                [Op.or]: [
+                    { userID: res.locals.loggedInUser.userID },
+                    { userID: 1 }
+                ]
+            },
             attributes: ["name", "categoryID"],
             include: { model: Deck, attributes: { exclude: ["categoryID"] } }
         });
