@@ -20,10 +20,10 @@ const associations = (db) => {
     db.intervals.hasOne(db.cards, {
         foreignKey: 'cardID'
     });
-    db.users.belongsTo(db.intervals, {
+    db.users.hasMany(db.intervals, {
         foreignKey: 'userID'
     })
-    db.intervals.hasOne(db.users, {
+    db.intervals.belongsTo(db.users, {
         foreignKey: 'userID'
     })
 }
