@@ -1,9 +1,53 @@
 import db from '../models';
-
+// import Sequelize from '../models'
 const Category = db.categories;
 const Deck = db.decks;
 const Card = db.cards;
 const User = db.users;
+const Interval = db.intervals;
+
+export const getRankData = async(req, res) => {
+    try {
+        // const data = Interval.findAll({
+        //     attributes: [
+        //         [sequelize.literal('(SELECT COUNT(Interval.interval) FROM Interval WHERE Interval.interval > 1)'), 'IntervalCount']
+        //     ],
+        //     group: 'userID',
+        //     order: [
+        //             [sequelize.literal('IntervalCount'), 'DESC']
+        //         ]
+        //         // });
+        //         // const data = Interval.count({
+        //         //     attributes: ['interval'],
+        //         //     // where: {
+        //         //     //     interval: { $gte: 1 }
+        //         //     // },
+        //         //     group: "userID",
+        //         // })
+
+        // });
+        // const data = await Interval.findAll({
+        //     // include: { model: User },
+        //     // col: "interval",
+        //     // where: {
+        //     //     interval: { $gte: 1 }
+        //     // },
+        //     group: "userID",
+        // })
+        const data = await Interval.findAll({
+            attributes: ['interval', [db.sequelize.fn('count', db.sequelize.col('interval')), 'cnt']],
+            group: ['User.userID'],
+            include: { model: User },
+            where: {
+                interval: { $gte: 1 }
+            }
+        })
+        return res.status(200).json({ data });
+
+    } catch (err) {
+        return res.status(400).json({ success: false, message: err + ' ' });
+    }
+}
 export const createCategory = async(req, res) => {
     try {
         // check duplicate category 
