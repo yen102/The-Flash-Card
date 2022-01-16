@@ -8,7 +8,7 @@ const app = express();
 
 init();
 
-app.use(bodyParser.json());
+app.use(express.json());
 app.use(cors());
 
 app.use((req, res, next) => {
@@ -38,8 +38,6 @@ import studyRoute from './routes/study';
 app.use('/user', userRoute);
 app.use('/data', dataRoute);
 app.use('/study', studyRoute);
-// app.use('/file', fileRoute);
-// app.use('/admin', adminRoute);
 
 const PORT = process.env.PORT || 8000;
 app.listen(PORT, console.log(`Server started on ${PORT}`));

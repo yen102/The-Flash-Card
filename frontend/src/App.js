@@ -12,7 +12,8 @@ const loading = (
 const SignUp = React.lazy(() => import('./pages/SignUp'));
 const Login = React.lazy(() => import('./pages/Login'));
 const Homepage = React.lazy(() => import('./pages/Homepage'));
-const Card = React.lazy(() => import('./pages/Card'));
+const Deck = React.lazy(() => import('./pages/Deck'));
+const Rank = React.lazy(() => import('./pages/Rank'));
 
 function App() {
   return (
@@ -22,7 +23,8 @@ function App() {
           <Route exact path='/signUp' name='Sign Up Page' element={<SignUp />} />
           <Route exact path='/login' name='Login Page' element={<Login />} />
           <Route exact path='/' name='Home Page' element={<Homepage />} />
-          <Route exact path='/card/:id' name='Card' element={<Card />} />
+          <Route exact path='/deck/:id' name='Deck' element={<Deck />} />
+          <Route exact path='rank' name='Rank' element={<Rank />} />
         </Routes>
       </React.Suspense>
     </BrowserRouter>

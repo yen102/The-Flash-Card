@@ -7,7 +7,7 @@ const Category = (props) => {
         {props.name}
       </div>
       <div className="decks">
-        {props.listDecks.map((deck, index) => <Deck key={index} name={deck.name} words={deck.words} cards={deck.cards} displayLink={deck.displayLink} />)}
+        {props.listDecks.map((deck, index) => <Deck key={index} name={deck.name} words={deck.words} cards={deck.cards} displayLink={deck.displayLink} id={deck.deckID} />)}
       </div>
     </div>
   );

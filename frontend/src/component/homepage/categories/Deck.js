@@ -5,7 +5,7 @@ const Deck = (props) => {
   const navigate = useNavigate();
 
   const onClickLink = () => {
-    navigate('/card/123', { replace: true });
+    navigate('/deck/123', { replace: true });
   }
 
   return (

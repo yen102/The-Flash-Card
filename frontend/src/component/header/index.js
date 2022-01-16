@@ -3,6 +3,7 @@ import ButtonHome from './ButtonHome';
 import ButtonSignIn from './ButtonSignIn';
 import ButtonSignUp from './ButtonSignUp';
 import Logo from './Logo';
+import ButtonRank from './ButtonRank';
 
 const Header = (props) => {
   const isLogin = localStorage.getItem('userID') && localStorage.getItem('token') && localStorage.getItem('role');
@@ -23,6 +24,7 @@ const Header = (props) => {
       <Logo />
       <div className='header-selection'>
         <ButtonHome selectedForm={props.selectedForm} />
+        <ButtonRank selectedForm={props.selectedForm} />
       </div>
     </div>
   );

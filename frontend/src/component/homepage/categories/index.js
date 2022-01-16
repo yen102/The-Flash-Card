@@ -1,4 +1,3 @@
-import { useRef } from "react";
 import Category from "./Category";
 
 const Categories = (props) => {

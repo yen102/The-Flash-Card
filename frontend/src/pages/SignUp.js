@@ -6,7 +6,7 @@ import { useEffect } from "react";
 
 const SignUp = () => {
 
-  const isLogin = localStorage.getItem('userId') && localStorage.getItem('name');
+  const isLogin = localStorage.getItem('userID') && localStorage.getItem('name');
   const navigate = useNavigate();
 
   useEffect(() => {

@@ -1,7 +1,7 @@
 import Header from "../component/header";
 import CardComponent from '../component/card';
 
-const Card = () => {
+const Deck = () => {
 
   const data = [
     { 
@@ -39,4 +39,4 @@ const Card = () => {
   );
 }
 
-export default Card;
+export default Deck;
