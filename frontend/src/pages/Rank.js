@@ -1,6 +1,12 @@
+import Header from "../component/header";
+import RankComponent from "../component/rank";
+
 const Rank = () => {
   return (
-    <div>sadad</div>
+    <>
+      <Header selectedForm='rank' />
+      <RankComponent />
+    </>
   );
 }
 

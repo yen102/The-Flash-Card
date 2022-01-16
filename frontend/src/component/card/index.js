@@ -26,6 +26,11 @@ const Card = (props) => {
     setCardNum(cardNum + 1);
   }
 
+  if(props.data.length === 0) {
+    return (
+      <div style={{ fontSize: 50, textAlign: "center", marginTop: '20vh' }}>No cards</div>
+    )
+  }
   return (
     <div className="card-content">
       <div className="card-buttons">

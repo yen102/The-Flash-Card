@@ -5,7 +5,7 @@ const Deck = (props) => {
   const navigate = useNavigate();
 
   const onClickLink = () => {
-    navigate('/deck/123', { replace: true });
+    navigate(`/deck/${props.id}`, { replace: true });
   }
 
   return (
