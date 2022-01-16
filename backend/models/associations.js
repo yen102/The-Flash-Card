@@ -20,6 +20,12 @@ const associations = (db) => {
     db.intervals.hasOne(db.cards, {
         foreignKey: 'cardID'
     });
+    db.users.belongsTo(db.intervals, {
+        foreignKey: 'userID'
+    })
+    db.intervals.hasOne(db.users, {
+        foreignKey: 'userID'
+    })
 }
 
 export default associations;
