@@ -2,8 +2,7 @@ import Header from "../component/header";
 import CardComponent from '../component/card';
 import { useEffect, useState } from "react";
 import { postAPI } from "../api";
-import { useLocation } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const Deck = () => {
   const location = useLocation();
@@ -13,7 +12,11 @@ const Deck = () => {
   const [checkEmptyDeck, setCheckEmptyDeck] = useState(true);
   const [studyTimes, setStudyTimes] = useState(0);
   const [cardNum, setCardNum] = useState(0);
+  const isLogin = localStorage.getItem('userID');
   const navigate = useNavigate();
+  if(!isLogin) {
+    navigate('/login', { replace: true });
+  }
 
   useEffect(() => {
     const getData = async () => {
