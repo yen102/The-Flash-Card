@@ -1,7 +1,7 @@
 import Header from "../component/header";
 import './register.css';
 import LogInForm from "../component/form/LogInForm";
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 
 const Login = () => {

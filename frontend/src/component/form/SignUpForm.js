@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from 'axios';
 import { API_URL } from "../../URL";
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router-dom";
 
 const SignUpForm = (props) => {
   const [username, setUsername] = useState('');

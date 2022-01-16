@@ -2,7 +2,7 @@ import Header from "../component/header";
 import CardComponent from '../component/card';
 import { useEffect, useState } from "react";
 import { postAPI } from "../api";
-import { useLocation } from 'react-router';
+import { useLocation } from 'react-router-dom';
 
 const Deck = () => {
   const location = useLocation();
@@ -45,7 +45,7 @@ const Deck = () => {
       setData(data);
     }
     getData();
-  });
+  }, [deckID]);
 
   return (
     <>

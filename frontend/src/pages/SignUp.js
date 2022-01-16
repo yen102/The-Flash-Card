@@ -1,7 +1,7 @@
 import Header from "../component/header";
 import './register.css';
 import SignUpForm from "../component/form/SignUpForm";
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 
 const SignUp = () => {
