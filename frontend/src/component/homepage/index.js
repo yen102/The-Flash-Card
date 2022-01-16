@@ -20,16 +20,12 @@ const Homepage = () => {
         getCategories();
     }, []);
 
-    return ( <
-        div className = 'homepage' >
-        <
-        HeaderHomepage / >
-        <
-        Bar categories = { categories }
-        /> <
-        Categories categories = { categories }
-        /> <
-        /div>
+    return ( 
+        <div className = 'homepage' >
+            <HeaderHomepage />
+            <Bar categories = { categories }/> 
+            <Categories categories = { categories }/> 
+        </div>
     );
 }
 

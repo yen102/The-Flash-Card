@@ -32,7 +32,7 @@ export const startSession = async(req, res) => {
                 }
             })
         }
-        return res.status(201).json({ success: true, cards: preparedCards });
+        return res.status(201).json({ success: true, data: preparedCards });
     } catch (err) {
         return res.status(400).json({ success: false, message: err + ' ' });
     }

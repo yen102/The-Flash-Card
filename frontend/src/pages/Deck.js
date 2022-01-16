@@ -39,7 +39,7 @@ const Deck = () => {
 
   useEffect(() => {
     const getData = async () => {
-      const data = await postAPI('/study/startSeesion', {
+      const data = await postAPI('/study/startSession', {
         deckID
       });
       setData(data);
