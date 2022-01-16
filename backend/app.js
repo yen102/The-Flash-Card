@@ -33,9 +33,11 @@ app.use((req, res, next) => {
 // Import Routes
 import userRoute from './routes/user';
 import dataRoute from './routes/data';
+import studyRoute from './routes/study';
 
 app.use('/user', userRoute);
 app.use('/data', dataRoute);
+app.use('/study', studyRoute);
 // app.use('/file', fileRoute);
 // app.use('/admin', adminRoute);
 

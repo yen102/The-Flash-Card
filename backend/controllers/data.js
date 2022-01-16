@@ -7,13 +7,15 @@ const User = db.users;
 export const createCategory = async(req, res) => {
     try {
         // check duplicate category 
-        const existed = await Category.findOne({ where: req.body });
+        const userID = res.locals.loggedInUser.userID;
+        const name = req.body.name;
+        const newCategory = { userID, name }
+        const existed = await Category.findOne({ where: newCategory });
         if (existed) {
             return res.status(400).json({ success: false, message: 'Category existed!' });
         }
-        const newCategory = req.body;
-        await Category.create(newCategory);
-        return res.status(201).json({ success: true });
+        const data = await Category.create(newCategory);
+        return res.status(201).json({ success: true, categoryID: data.dataValues.categoryID });
     } catch (err) {
         return res.status(400).json({ success: false, message: err + ' ' });
     }
@@ -56,10 +58,14 @@ export const createCard = async(req, res) => {
     }
 }
 
-export const getCategories = async(req, res) => {
+export const getDecks = async(req, res) => {
     try {
         // const data = await Category.findAll({ where: { userID: req.body.userID } });
-        const data = await Category.findAll({ include: { model: User } });
+        const data = await Category.findAll({
+            where: { userID: res.locals.loggedInUser.userID },
+            attributes: ["name", "categoryID"],
+            include: { model: Deck, attributes: { exclude: ["categoryID"] } }
+        });
         return res.status(201).json({ success: true, listCategories: data });
     } catch (err) {
         return res.status(400).json({ success: false, message: err + ' ' });
