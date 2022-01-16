@@ -6,7 +6,7 @@ import { useLocation } from 'react-router-dom';
 
 const Deck = () => {
   const location = useLocation();
-  const params = location.split('/');
+  const params = location.pathname.split('/');
   const deckID = params[params.length - 1];
   // const data = [
   //   { 
