@@ -2,6 +2,8 @@ import { useNavigate } from "react-router-dom";
 
 const Deck = (props) => {
 
+  const name = props.name.split(" ");
+  const displayLink = name[name.length - 1];
   const navigate = useNavigate();
 
   const onClickLink = () => {
@@ -17,7 +19,7 @@ const Deck = (props) => {
         {props.words} words, {props.cards} cards
       </div>
       <div className='deck-link' onClick={onClickLink}>
-        {props.displayLink}
+        {displayLink}
       </div>
     </div>
   );
