@@ -17,7 +17,7 @@ export const getAPI = async (path, params) => {
 
 export const postAPI = async (path, body) => {
   try {
-    const data = await axios.post(API_URL + path, body, {
+    const { data } = await axios.post(API_URL + path, body, {
       headers: {
         'x-access-token': localStorage.getItem('token')
       }

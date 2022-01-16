@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { getAPI } from "../../api";
 
 const Rank = () => {
 
@@ -6,7 +7,12 @@ const Rank = () => {
 
   useEffect(() => {
     const getData = async () => {
-      setData([{ name: 'hoang', words: 100 }, { name: 'yen', words: 1000 }]);
+      try {
+        const { data } = await getAPI('/data/getRankData');
+        setData(data);
+      } catch (e) {
+        console.error(e);
+      }
     }
     getData();
   }, []);
@@ -15,8 +21,8 @@ const Rank = () => {
     return data.map((user, index) => (
       <tr>
         <td>{index + 1}</td>
-        <td>{user.name}</td>
-        <td>{user.words}</td>
+        <td>{user.User.username}</td>
+        <td>{user.cnt}</td>
       </tr>
     ));
   }

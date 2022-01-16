@@ -12,7 +12,6 @@ const Homepage = () => {
     useEffect(() => {
         const getCategories = async() => {
             const { listCategories } = await getAPI('/data/getDecks');
-            console.log(listCategories);
             listCategories.map(category => ({...category, ref: React.createRef() }));
             setCategories(listCategories);
         }

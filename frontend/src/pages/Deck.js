@@ -3,54 +3,69 @@ import CardComponent from '../component/card';
 import { useEffect, useState } from "react";
 import { postAPI } from "../api";
 import { useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const Deck = () => {
   const location = useLocation();
   const params = location.pathname.split('/');
   const deckID = params[params.length - 1];
-  // const data = [
-  //   { 
-  //     cardID: 1,
-  //     term: "Hello",
-  //     audio: "https://file-examples-com.github.io/uploads/2017/11/file_example_MP3_700KB.mp3", 
-  //     image: "https://www.viaggiando-italia.it/wp-content/uploads/2017/04/trulli.jpg",
-  //     definition: "xin chao"
-  //   }, { 
-  //     cardID: 2,
-  //     term: "hello1",
-  //     audio: "https://file-examples-com.github.io/uploads/2017/11/file_example_MP3_700KB.mp3", 
-  //     image: "https://www.viaggiando-italia.it/wp-content/uploads/2017/04/trulli.jpg",
-  //     definition: "xin chao1"
-  //   }, { 
-  //     cardID: 3,
-  //     term: "Hello2",
-  //     audio: "https://file-examples-com.github.io/uploads/2017/11/file_example_MP3_700KB.mp3", 
-  //     image: "https://www.viaggiando-italia.it/wp-content/uploads/2017/04/trulli.jpg",
-  //     definition: "xin chao2"
-  //   }, { 
-  //     cardID: 4,
-  //     term: "Hello3",
-  //     audio: "https://file-examples-com.github.io/uploads/2017/11/file_example_MP3_700KB.mp3", 
-  //     image: "https://www.viaggiando-italia.it/wp-content/uploads/2017/04/trulli.jpg",
-  //     definition: "xin chao3"
-  //   }, 
-  // ]
   const [data, setData] = useState([]);
+  const [checkEmptyDeck, setCheckEmptyDeck] = useState(true);
+  const [studyTimes, setStudyTimes] = useState(0);
+  const [cardNum, setCardNum] = useState(0);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const getData = async () => {
-      const data = await postAPI('/study/startSession', {
+      const { cards } = await postAPI('/study/startSession', {
         deckID
       });
-      setData(data);
+      const listCards = cards.map(card => ({ ...card, score: 0 }));
+      setData(listCards);
+      if(cards) setCheckEmptyDeck(false);
     }
     getData();
-  }, [deckID]);
+  }, [deckID, studyTimes]);
+
+  const nextCard = async (difficulty) => {
+    const { score } = data[cardNum];
+    const newScore = difficulty === 'easy' ? (score+1)*2 : (difficulty === 'good' ? score + 1 : 0);
+    if(cardNum < data.length - 1) {
+      setData(data => [
+        ...data.slice(0, cardNum),
+        {
+          ...data[cardNum],
+          score: newScore
+        },
+        ...data.slice(cardNum + 1),
+      ]);
+      setCardNum(cardNum + 1);
+    } else {
+      const newData = [
+        ...data.slice(0, cardNum),
+        {
+          ...data[cardNum],
+          score: newScore
+        },
+        ...data.slice(cardNum + 1),
+      ].filter(card => card.score <= 8);
+      if(newData.length > 0) {
+        setData(newData);
+        setCardNum(0);
+      } else {
+        if(window.confirm('Do you want to continue learning?')) {
+          setStudyTimes(studyTimes + 1);
+        } else {
+          navigate('/', { replace: true });
+        }
+      }
+    }
+  }
 
   return (
     <>
       <Header selectedForm='home' />
-      <CardComponent data={data} />
+      <CardComponent data={data} nextCard={nextCard} checkEmptyDeck={checkEmptyDeck} cardNum={cardNum} />
     </>
   );
 }

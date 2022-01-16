@@ -2,31 +2,16 @@ import { useState } from "react";
 import LeftButton from "./LeftButton";
 import './card.css';
 import MainContent from "./MainContent";
-import axios from 'axios';
-import { API_URL } from "../../URL";
 
-const Card = (props) => {
-
-  const [cardNum, setCardNum] = useState(0);
+const Card = ({ data, nextCard, checkEmptyDeck, cardNum }) => {
+  
   const [cardType, setCardType] = useState('term');
 
   const changeTypeCard = (type) => {
     setCardType(type);
   }
 
-  const nextCard = async (difficulty) => {
-    await axios.post(API_URL + '/', {
-      difficulty,
-      cardID: props.data[cardNum].cardID
-    }, {
-      headers: {
-        'x-access-token': localStorage.getItem('token')
-      }
-    });
-    setCardNum(cardNum + 1);
-  }
-
-  if(props.data.length === 0) {
+  if(checkEmptyDeck) {
     return (
       <div style={{ fontSize: 50, textAlign: "center", marginTop: '20vh' }}>No cards</div>
     )
@@ -39,7 +24,7 @@ const Card = (props) => {
         <LeftButton name="Dịch nghĩa" onClick={changeTypeCard} type='definition' />
         <LeftButton name="Hình ảnh" onClick={changeTypeCard} type='image' />
       </div>
-      <MainContent data={props.data[cardNum]} type={cardType} nextCard={nextCard} />
+      <MainContent data={data[cardNum].Card} type={cardType} nextCard={nextCard} />
     </div>
   );
 }
